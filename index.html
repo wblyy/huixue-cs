@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>回血 · 长沙 — 供给诊断，把一小时的价钱找回来</title>
+<meta name="description" content="给长沙在校生的 agent：先判断供给真假，再把 11.5 倍的时薪价差找回来。永久免费。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2300C458'/%3E%3Cpath d='M32 47S17 36.5 17 27a8 8 0 0 1 15-3.6A8 8 0 0 1 47 27c0 9.5-15 20-15 20Z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+
+  :root{
+    --sky-1:#A9C8D6;
+    --sky-2:#DCEDF6;
+    --sky-3:#EFF8FC;
+    --green:#00C458;
+    --green-d:#00A94C;
+    --green-wash:#E8FAF0;
+    --blue:#1E6FE8;
+    --blue-d:#1557BD;
+    --ink:#15181C;
+    --ink-2:#565C64;
+    --ink-3:#8A9099;
+    --ink-4:#AEB5BD;
+    --line:#E4EBF1;
+    --line-2:#EFF4F8;
+    --bg:#F5FAFD;
+    --card:#FFFFFF;
+    --shadow:0 18px 50px -22px rgba(23,63,95,.34);
+    --shadow-s:0 6px 20px -10px rgba(23,63,95,.3);
+    --r:20px;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+    --num:"DIN Alternate","Helvetica Neue",Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font:16px/1.75 var(--sans);overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  ul,ol{list-style:none}
+  [id]{scroll-margin-top:84px}
+  .wrap{width:min(1180px,calc(100% - 48px));margin:0 auto}
+
+  /* ============ 顶部导航 ============ */
+  .nav{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(226,236,243,.9)}
+  .nav-in{display:flex;align-items:center;height:68px;gap:34px}
+  .brand{display:flex;align-items:center;gap:9px;font-size:22px;font-weight:700;letter-spacing:.1em}
+  .brand svg{width:30px;height:30px;flex:none}
+  .brand b{font-weight:700}
+  .links{display:flex;gap:28px;font-size:15px;color:var(--ink-2);flex:none}
+  .links a{padding:6px 0;border-bottom:2px solid transparent;white-space:nowrap;transition:color .2s,border-color .2s}
+  .links a:hover{color:var(--ink);border-bottom-color:var(--green)}
+  .nav-cta{margin-left:auto;display:flex;align-items:center;gap:10px}
+  .nav-cta .mini{font-size:14px;color:var(--ink-2)}
+  .nav-cta .mini:hover{color:var(--ink)}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;
+    border-radius:999px;font-size:15px;font-weight:600;padding:11px 26px;
+    transition:transform .18s,box-shadow .18s,background .18s;white-space:nowrap}
+  .btn-green{background:linear-gradient(180deg,#12D46A,#00B851);color:#fff;
+    box-shadow:0 8px 22px -8px rgba(0,196,88,.72), 0 1px 0 rgba(255,255,255,.4) inset}
+  .btn-green:hover{transform:translateY(-1px);box-shadow:0 12px 28px -8px rgba(0,196,88,.85), 0 1px 0 rgba(255,255,255,.4) inset}
+  .btn-sm{padding:8px 20px;font-size:14px}
+  .btn-ghost{background:#fff;color:var(--ink);border:1px solid #DCE6EE;box-shadow:0 4px 14px -10px rgba(23,63,95,.4)}
+  .btn-ghost:hover{border-color:#C5D5E2;transform:translateY(-1px)}
+
+  /* ============ 头图 ============ */
+  .hero{
+    position:relative;overflow:hidden;
+    background:linear-gradient(180deg,#A9C8D6 0%,#C9E0EB 26%,#EAF4FA 62%,#F5FAFD 88%);
+    padding:62px 0 0;text-align:center;
+  }
+  .hero::before{
+    content:"";position:absolute;left:50%;top:-230px;width:1100px;height:560px;transform:translateX(-50%);
+    background:radial-gradient(ellipse at 50% 50%, rgba(255,255,255,.72), rgba(255,255,255,0) 68%);
+    pointer-events:none;
+  }
+  .hero-in{position:relative}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:7px;height:29px;padding:0 14px;border-radius:999px;
+    background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);
+    font-size:13px;color:#2E5A73;letter-spacing:.02em;
+    box-shadow:0 3px 12px -8px rgba(23,63,95,.5);
+  }
+  .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(0,196,88,.18)}
+  h1{
+    margin:20px auto 0;max-width:15em;
+    font-size:clamp(38px,4.6vw,62px);line-height:1.18;font-weight:700;letter-spacing:.01em;
+    color:#12304A;
+  }
+  h1 em{font-style:normal;color:var(--green-d)}
+  .hero-sub{
+    margin:18px auto 0;max-width:40em;font-size:clamp(15px,1.35vw,17.5px);
+    line-height:2;color:#3B5A6E;
+  }
+  .hero-sub b{color:#12304A;font-weight:700}
+  .hero-btns{display:flex;justify-content:center;gap:14px;margin-top:28px;flex-wrap:wrap}
+  .hero-tags{display:flex;justify-content:center;gap:10px;margin-top:20px;flex-wrap:wrap;font-size:13px;color:#4E6B7D}
+  .hero-tags span{display:inline-flex;align-items:center;gap:6px}
+  .hero-tags span::before{content:"";width:5px;height:5px;border-radius:50%;background:#7FA8BD}
+
+  /* 产品截图 */
+  .shot{
+    position:relative;margin:46px auto 0;width:min(760px,100%);
+  }
+  .shot-frame{
+    background:#fff;border-radius:26px 26px 0 0;
+    box-shadow:0 50px 90px -50px rgba(18,48,74,.55), 0 0 0 1px rgba(255,255,255,.8);
+    overflow:hidden;
+  }
+  .shot-bar{
+    display:flex;align-items:center;gap:7px;height:34px;padding:0 15px;
+    background:#F7FBFF;border-bottom:1px solid var(--line-2);
+  }
+  .shot-bar i{width:9px;height:9px;border-radius:50%;background:#E2EAF1;display:block}
+  .shot-bar i:nth-child(1){background:#FFC7C2}
+  .shot-bar i:nth-child(2){background:#FFE0B2}
+  .shot-bar i:nth-child(3){background:#C6EFD4}
+  .shot-bar span{margin-left:8px;font-size:12px;color:var(--ink-4);letter-spacing:.02em}
+
+  .app{padding:14px 16px 18px;background:linear-gradient(180deg,#FFFFFF,#FCFEFF)}
+  .app-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+  .app-title{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#2A3B4A}
+  .app-title .dotpill{
+    display:inline-flex;align-items:center;gap:5px;height:22px;padding:0 9px;border-radius:999px;
+    background:var(--green-wash);color:var(--green-d);font-size:11.5px;font-weight:600;
+  }
+  .app-title .dotpill::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 1.7s ease-in-out infinite}
+  .app-stat{font-size:12px;color:var(--ink-3)}
+  .app-stat b{color:var(--ink);font-family:var(--num);font-size:13px}
+
+  .app-grid{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:16px;align-items:stretch}
+
+  /* 雷达 */
+  .radar{position:relative;width:100%;max-width:290px;aspect-ratio:1/1;margin:0 auto}
+  .radar-screen{
+    position:absolute;inset:0;border-radius:50%;overflow:hidden;
+    background:radial-gradient(circle at 50% 46%, #FFFFFF 0 58%, #F0F8FD 100%);
+    box-shadow:inset 0 0 0 1px #D3E4F0, inset 0 0 28px rgba(30,111,232,.06);
+  }
+  .radar-grid{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .radar-sweep{position:absolute;inset:0;border-radius:50%;will-change:transform}
+  .rt{
+    position:absolute;inset:0;border-radius:50%;
+    background:conic-gradient(from 0deg,
+      rgba(0,196,88,0) 0deg, rgba(0,196,88,0) 288deg,
+      rgba(0,196,88,.06) 306deg, rgba(0,196,88,.12) 322deg,
+      rgba(0,196,88,.2) 337deg, rgba(0,196,88,.32) 349deg,
+      rgba(0,196,88,.46) 356deg, rgba(0,196,88,.62) 359.5deg,
+      rgba(0,196,88,.74) 360deg);
+    -webkit-mask-image:radial-gradient(circle at 50% 50%, transparent 0 15%, #000 32%, #000 98.5%, transparent 100%);
+    mask-image:radial-gradient(circle at 50% 50%, transparent 0 15%, #000 32%, #000 98.5%, transparent 100%);
+  }
+  .rn{
+    position:absolute;left:50%;top:8.5%;height:41.5%;width:2px;margin-left:-1px;
+    background:linear-gradient(to top, rgba(0,196,88,.2), #00C458);
+    box-shadow:0 0 10px rgba(0,196,88,.5), 0 0 2px rgba(0,196,88,.6);
+  }
+  .rn::before{
+    content:"";position:absolute;top:-1px;left:50%;width:5px;height:5px;margin-left:-2.5px;
+    border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(0,196,88,.18);
+  }
+  .blip{position:absolute;inset:0;transform:rotate(var(--a));pointer-events:none}
+  .blip b{
+    --bc:#00C458;
+    position:absolute;left:50%;top:calc(50% - var(--r));
+    width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;
+    background:var(--bc);opacity:var(--o,0);
+    box-shadow:0 0 0 2px #fff, 0 0 0 5px color-mix(in srgb, var(--bc) 18%, transparent);
+    transition:opacity .18s linear;
+  }
+  .blip b::after{
+    content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;
+    border-radius:50%;border:1px solid var(--bc);
+    transform:scale(var(--e,1));opacity:var(--eo,0);
+    transition:opacity .1s linear;
+  }
+  .blip.s b{--bc:#1E6FE8}
+  .blip.m b{--bc:#F5A623}
+  .radar-core{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:33%;aspect-ratio:1/1;border-radius:50%;
+    display:grid;place-content:center;text-align:center;
+    background:#fff;
+    box-shadow:0 0 0 1px #D3E4F0, 0 0 0 8px rgba(255,255,255,.82);
+  }
+  .radar-num{font-family:var(--num);font-size:36px;line-height:1;letter-spacing:-.03em;color:#12304A;font-variant-numeric:tabular-nums}
+  .radar-num small{font-family:var(--sans);font-size:12px;color:var(--ink-3);margin-left:2px}
+  .radar-lab{font-size:10px;letter-spacing:.22em;color:var(--ink-4);margin-top:6px;padding-left:.22em}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.78)}}
+
+  /* 扫描结果 */
+  .found-box{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff;
+    display:flex;flex-direction:column}
+  .found-box .findings{flex:1;height:auto;min-height:0}
+  .found-h{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#F8FBFE;border-bottom:1px solid var(--line-2);font-size:12px;color:var(--ink-3)}
+  .found-h b{color:#2A3B4A;font-weight:600}
+  .findings{overflow:hidden;display:flex;flex-direction:column}
+  .findings li{
+    flex:1;display:grid;grid-template-columns:22px 1fr auto;align-items:center;gap:9px;
+    min-height:32px;padding:0 12px;border-bottom:1px dotted var(--line-2);font-size:12px;
+    animation:fin .32s ease both;
+  }
+  .findings li:last-child{border-bottom:none}
+  @keyframes fin{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+  .f-tag{display:grid;place-items:center;width:19px;height:19px;border-radius:5px;font-size:11px;color:#fff;line-height:1;flex:none}
+  .f-tag.k{background:var(--green)}
+  .f-tag.s{background:var(--blue)}
+  .f-tag.m{background:#F5A623}
+  .f-txt{color:#4E5A66;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+  .f-val{color:#12304A;font-family:var(--num);font-size:12px;white-space:nowrap}
+  .found-foot{display:flex;justify-content:space-between;padding:8px 12px;background:#F8FBFE;border-top:1px solid var(--line-2);font-size:11.5px;color:var(--ink-3)}
+  .found-foot b{color:var(--green-d);font-family:var(--num)}
+
+  /* ============ 通用版块 ============ */
+  .sec{padding:88px 0 0}
+  .sec-head{text-align:center;max-width:44em;margin:0 auto 42px}
+  .sec-no{display:inline-block;font-size:12.5px;letter-spacing:.2em;color:var(--green-d);font-weight:700;margin-bottom:12px}
+  h2{font-size:clamp(27px,3vw,38px);line-height:1.36;font-weight:700;color:#12304A}
+  .sec-sub{margin-top:14px;font-size:16px;line-height:1.95;color:var(--ink-2)}
+
+  /* 三方向 */
+  .dirs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .dir{background:var(--card);border-radius:var(--r);padding:30px 28px 28px;
+    box-shadow:var(--shadow-s);border:1px solid var(--line-2);transition:transform .22s,box-shadow .22s}
+  .dir:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .dir-ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;
+    font-size:19px;font-weight:700;color:#fff;margin-bottom:16px}
+  .dir:nth-child(1) .dir-ic{background:linear-gradient(140deg,#12D46A,#00A94C);box-shadow:0 8px 20px -10px rgba(0,196,88,.9)}
+  .dir:nth-child(2) .dir-ic{background:linear-gradient(140deg,#3B8BF5,#1557BD);box-shadow:0 8px 20px -10px rgba(30,111,232,.85)}
+  .dir:nth-child(3) .dir-ic{background:linear-gradient(140deg,#FFBE55,#F08A00);box-shadow:0 8px 20px -10px rgba(245,166,35,.85)}
+  .dir h3{font-size:19px;font-weight:700;color:#12304A;margin-bottom:7px}
+  .dir .k{font-size:12px;letter-spacing:.1em;color:var(--ink-4);display:block;margin-bottom:10px}
+  .dir p{font-size:14px;line-height:1.9;color:var(--ink-2)}
+  .dir p b{color:#12304A;font-weight:600}
+
+  /* ============ 核验 ============ */
+  .vfy{display:grid;grid-template-columns:minmax(0,430px) minmax(0,1fr);gap:22px;align-items:stretch}
+  .vfy-card{min-width:0;background:#fff;border-radius:var(--r);border:1px solid var(--line-2);box-shadow:var(--shadow);padding:22px 24px 20px}
+  .vfy-h{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px;font-weight:700;color:#12304A;
+    padding-bottom:14px;border-bottom:1px solid var(--line-2)}
+  .vfy-h em{font-style:normal;font-size:12px;font-weight:400;color:var(--ink-4)}
+  .fld{margin-top:16px}
+  .fld label{display:block;font-size:12px;color:var(--ink-3);margin-bottom:7px;letter-spacing:.04em}
+  .fld-box{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:46px;padding:0 14px;
+    border-radius:12px;border:1px solid #D9E6F0;background:#FBFDFF;font-size:15px;font-weight:600;color:#12304A}
+  .fld-hit{font-size:11.5px;font-weight:400;color:var(--ink-4);white-space:nowrap}
+  .chips{display:flex;gap:8px}
+  .chips span{flex:1;min-width:0;text-align:center;height:38px;line-height:38px;border-radius:10px;
+    border:1px solid #D9E6F0;background:#FBFDFF;font-size:13px;color:var(--ink-2);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+  .chips .on{background:var(--green-wash);border-color:#9AE3BC;color:var(--green-d);font-weight:700}
+  .fld-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px;padding-top:15px;
+    border-top:1px dashed var(--line)}
+  .fld-row i{display:block;font-style:normal;font-size:11px;color:var(--ink-4);margin-bottom:3px}
+  .fld-row b{font-size:13px;font-weight:600;color:#12304A;line-height:1.4;display:block}
+  .vfy-foot{margin-top:16px;border-radius:12px;background:#F2FBF6;border:1px solid #CFEEDD;
+    padding:11px 14px;font-size:12.5px;color:var(--green-d);display:flex;align-items:center;gap:9px}
+  .vfy-foot::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);
+    box-shadow:0 0 0 3px rgba(0,196,88,.16);flex:none}
+  .vfy-no{min-width:0;background:#fff;border-radius:var(--r);border:1px solid var(--line-2);box-shadow:var(--shadow-s);padding:22px 24px 20px}
+  .vfy-no h4{font-size:12.5px;font-weight:700;color:var(--ink-3);letter-spacing:.1em;margin-bottom:4px}
+  .vfy-no li{display:flex;gap:14px;align-items:baseline;padding:9px 0;border-bottom:1px dotted var(--line-2);font-size:14px}
+  .vfy-no li b{color:#12304A;font-weight:600;flex:none;min-width:8.4em;
+    text-decoration:line-through;text-decoration-color:#DDA6A6;text-decoration-thickness:1px}
+  .vfy-no li span{font-size:12.5px;color:var(--ink-4)}
+  .vfy-no p{margin-top:14px;font-size:13px;line-height:1.9;color:var(--ink-2);
+    background:#F8FBFE;border-radius:12px;padding:12px 14px}
+  .vfy-no p b{color:#12304A;font-weight:600}
+
+  /* ============ 年级 × 学校 ============ */
+  .mats-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:26px}
+  .mats-tabs button{font:inherit;font-size:14px;font-weight:600;color:var(--ink-2);background:#fff;
+    border:1px solid #DCE6EE;border-radius:999px;padding:9px 20px;cursor:pointer;
+    transition:background .18s,color .18s,border-color .18s,box-shadow .18s}
+  .mats-tabs button:hover{border-color:#C5D5E2;color:var(--ink)}
+  .mats-tabs button[aria-selected="true"]{background:linear-gradient(180deg,#12D46A,#00B851);color:#fff;
+    border-color:transparent;box-shadow:0 8px 20px -10px rgba(0,196,88,.8)}
+  .mats-panel{display:none}
+  .mats-panel.on{display:block}
+  .grade-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .gcard{background:#fff;border-radius:18px;border:1px solid var(--line-2);box-shadow:var(--shadow-s);
+    padding:19px 19px 16px;display:flex;flex-direction:column}
+  .gcard header{display:flex;align-items:baseline;gap:8px;padding-bottom:11px;border-bottom:1px solid var(--line-2)}
+  .g-no{font-size:17px;font-weight:700;color:#12304A;letter-spacing:.02em}
+  .gcard header em{font-style:normal;font-size:11px;color:var(--ink-4)}
+  .gcard li{display:flex;justify-content:space-between;gap:10px;align-items:baseline;
+    padding:9px 0;border-bottom:1px dotted var(--line-2);font-size:13.5px;color:#2B3A47;line-height:1.5}
+  .gcard li:last-child{border-bottom:none}
+  .gcard li span{min-width:0;font-weight:500}
+  .gcard li b{font-family:var(--num);font-size:12.5px;font-weight:700;color:var(--green-d);
+    white-space:nowrap;flex:none;text-align:right;line-height:1.5}
+  .gcard li b.q{font-family:var(--sans);font-weight:400;color:var(--ink-3)}
+  .gcard p{margin-top:auto;padding-top:12px;font-size:11.5px;line-height:1.8;color:var(--ink-3)}
+  .mats-note{margin-top:18px;font-size:12.5px;line-height:1.9;color:var(--ink-4);text-align:center}
+  .mats-note b{color:var(--ink-2);font-weight:600}
+
+  /* 发现清单 */
+  .panel{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);
+    border:1px solid var(--line-2);overflow:hidden}
+  .panel-h{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    padding:16px 22px;border-bottom:1px solid var(--line);background:#FBFDFE}
+  .panel-h b{font-size:15.5px;color:#12304A;font-weight:700}
+  .panel-h em{font-style:normal;font-size:12.5px;color:var(--ink-3);margin-left:10px}
+  .panel-h .pill{font-size:12px;color:var(--green-d);background:var(--green-wash);
+    border-radius:999px;padding:3px 11px;font-weight:600}
+  .grp{border-bottom:1px solid var(--line)}
+  .grp:last-of-type{border-bottom:none}
+  .grp-h{display:flex;align-items:center;gap:9px;padding:12px 22px 10px;background:#FCFEFF;
+    border-bottom:1px solid var(--line-2);font-size:13.5px;font-weight:700;color:#12304A}
+  .grp-h em{font-style:normal;font-weight:400;font-size:12px;color:var(--ink-3)}
+  .grp-h .bd{width:4px;height:14px;border-radius:2px;background:var(--green);display:block}
+  .grp.b .bd{background:var(--blue)}
+  .grp.o .bd{background:#F5A623}
+  .row{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:baseline;
+    padding:9px 22px;border-bottom:1px solid var(--line-2);font-size:14px;color:#3E4A56}
+  .row:last-child{border-bottom:none}
+  .row:hover{background:#FAFDFF}
+  .row .l{min-width:0}
+  .row .l span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .row .l i{font-style:normal;display:block;font-size:12px;color:var(--ink-4);margin-top:1px}
+  .row .r{font-family:var(--num);font-size:15px;font-weight:600;color:var(--green-d);white-space:nowrap}
+  .row .r.b{color:var(--blue-d)}
+  .row .r.o{color:#D98200}
+  .row .r.q{color:var(--ink-4);font-weight:400}
+  .panel-foot{display:flex;flex-wrap:wrap;gap:10px 28px;padding:14px 22px;background:#F8FBFE;
+    border-top:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+  .panel-foot b{font-family:var(--num);font-size:14px;color:var(--green-d)}
+
+  /* ============ 执行队列 ============ */
+  .exec{padding:8px 0 4px}
+  .exec-row{display:grid;grid-template-columns:96px 1fr 46px 150px;gap:16px;align-items:center;
+    padding:12px 22px;border-bottom:1px solid var(--line-2);font-size:13.5px}
+  .exec-row:last-child{border-bottom:none}
+  .e-name{color:#12304A;font-weight:600;white-space:nowrap}
+  .e-bar{position:relative;height:8px;border-radius:999px;background:#EFF4F8;overflow:hidden}
+  .e-bar i{position:absolute;inset:0 auto 0 0;width:0;border-radius:999px;
+    background:linear-gradient(90deg,#3B8BF5,#1557BD);
+    transition:width 1.1s cubic-bezier(.3,.7,.3,1),background .3s}
+  .exec-row.done .e-bar i{background:linear-gradient(90deg,#12D46A,#00A94C)}
+  .e-pct{font-family:var(--num);font-size:12.5px;color:var(--ink-3);text-align:right;white-space:nowrap}
+  .exec-row.done .e-pct{color:var(--green-d)}
+  .e-note{font-size:12.5px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .exec-row.hold{background:#FFFBF3}
+  .exec-row.hold .e-name{color:#C47800}
+  .exec-row.hold .e-bar{background:#FDEFD8}
+  .exec-row.hold .e-bar i{width:100%!important;background:linear-gradient(90deg,#FFD68A,#F5A623)}
+  .exec-row.hold .e-pct{color:#C47800}
+  .exec-note{margin-top:16px;font-size:13.5px;line-height:1.9;color:var(--ink-3);text-align:center}
+  .exec-note b{color:#12304A;font-weight:600}
+
+  /* ============ 大数字 ============ */
+  .stats{
+    margin-top:88px;padding:60px 0 56px;
+    background:linear-gradient(180deg,#EAF4FA,#F7FBFE);
+    border-top:1px solid #DEEBF4;border-bottom:1px solid #DEEBF4;
+  }
+  .stats-in{text-align:center}
+  .stats-in h3{font-size:19px;font-weight:700;color:#12304A;margin-bottom:6px}
+  .stats-in .lead{font-size:14px;color:var(--ink-2);margin-bottom:38px}
+  .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .stat{padding:0 18px}
+  .stat + .stat{border-left:1px solid #D8E7F1}
+  .stat b{display:block;font-family:var(--num);font-size:clamp(38px,4.4vw,54px);
+    line-height:1.05;font-weight:700;letter-spacing:-.02em;color:#12304A}
+  .stat b i{font-style:normal;font-size:.42em;font-weight:600;color:var(--ink-3);margin-left:3px;letter-spacing:0}
+  .stat span{display:block;margin-top:7px;font-size:13px;color:var(--ink-2)}
+
+  /* ============ 承诺 ============ */
+  .faith{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:0}
+  .faith-card{background:var(--card);border-radius:var(--r);padding:26px 26px 20px;
+    border:1px solid var(--line-2);box-shadow:var(--shadow-s)}
+  .faith-card h4{display:flex;align-items:center;gap:9px;font-size:14.5px;font-weight:700;
+    color:var(--ink-3);padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:4px}
+  .faith-card h4::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ink-4);flex:none}
+  .faith-card.yes h4{color:var(--green-d)}
+  .faith-card.yes h4::before{background:var(--green);box-shadow:0 0 0 4px rgba(0,196,88,.14)}
+  .faith-card li{display:flex;gap:9px;padding:9px 0;border-bottom:1px dotted var(--line-2);
+    font-size:14px;line-height:1.78;color:var(--ink-2)}
+  .faith-card li:last-child{border-bottom:none}
+  .faith-card li::before{content:"—";color:var(--ink-4);flex:none}
+  .faith-card.yes li{color:#2E3A46}
+  .faith-card.yes li::before{content:"✓";color:var(--green);font-weight:700}
+
+  /* ============ 免费 ============ */
+  .free{
+    margin-top:88px;border-radius:26px;overflow:hidden;position:relative;
+    background:linear-gradient(135deg,#0E3F64 0%,#14557F 45%,#0E7A5A 100%);
+    padding:46px 48px;color:#fff;
+  }
+  .free::after{
+    content:"";position:absolute;right:-80px;top:-90px;width:340px;height:340px;border-radius:50%;
+    background:radial-gradient(circle,rgba(0,196,88,.45),rgba(0,196,88,0) 68%);pointer-events:none;
+  }
+  .free-in{position:relative;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center}
+  .free h3{font-size:clamp(28px,3.2vw,40px);line-height:1.25;font-weight:700;letter-spacing:.01em}
+  .free h3 small{display:block;font-size:12px;letter-spacing:.22em;font-weight:500;color:rgba(255,255,255,.62);margin-bottom:10px}
+  .free-list{display:grid;grid-template-columns:1fr 1fr;gap:10px 26px;margin-top:22px}
+  .free-list div{display:flex;gap:8px;font-size:13.5px;line-height:1.8;color:rgba(255,255,255,.86)}
+  .free-list div::before{content:"✓";color:#4FF19B;font-weight:700;flex:none}
+  .free-list b{color:#fff;font-weight:700}
+  .free .btn-green{background:#fff;color:#0E7A5A;box-shadow:0 12px 30px -12px rgba(0,0,0,.55)}
+  .free .btn-green:hover{background:#F4FFFA}
+  .free-side{text-align:center}
+  .free-side .btn{min-width:200px}
+
+  /* ============ 落款 CTA ============ */
+  .final{padding:92px 0 0;text-align:center}
+  .final h2{font-size:clamp(30px,3.6vw,46px);line-height:1.3}
+  .final p{margin-top:16px;font-size:16px;color:var(--ink-2)}
+  .final .btns{display:flex;justify-content:center;gap:14px;margin-top:30px;flex-wrap:wrap}
+  .final small{display:block;margin-top:16px;font-size:13px;color:var(--ink-4)}
+
+  /* ============ 页脚 ============ */
+  footer{margin-top:88px;background:#fff;border-top:1px solid var(--line);padding:52px 0 34px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;padding-bottom:34px;border-bottom:1px solid var(--line-2)}
+  .foot-brand .brand{font-size:19px}
+  .foot-brand p{margin-top:12px;font-size:13px;line-height:1.9;color:var(--ink-3);max-width:24em}
+  .foot-col h5{font-size:13px;font-weight:700;color:#12304A;margin-bottom:12px;letter-spacing:.04em}
+  .foot-col a{display:block;font-size:13px;color:var(--ink-3);padding:4px 0;transition:color .18s}
+  .foot-col a:hover{color:var(--green-d)}
+  .foot-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:22px;font-size:12.5px;color:var(--ink-4)}
+  .foot-bot .l{display:flex;gap:20px;flex-wrap:wrap}
+  .foot-bot a:hover{color:var(--ink-2)}
+
+  /* ============ 响应式 ============ */
+  @media(max-width:1080px){
+    .vfy{grid-template-columns:minmax(0,1fr)}
+    .grade-grid{grid-template-columns:1fr 1fr}
+    .app-grid{grid-template-columns:1fr;gap:14px}
+    .radar{max-width:240px}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .dirs{gap:16px}
+    .dir{padding:26px 22px 24px}
+  }
+  @media(max-width:860px){
+    .wrap{width:calc(100% - 36px)}
+    .links{display:none}
+    .hero{padding-top:44px}
+    .shot{margin-top:34px}
+    .dirs{grid-template-columns:1fr}
+    .stat-grid{grid-template-columns:1fr 1fr;gap:28px 0}
+    .stat:nth-child(3){border-left:none}
+    .stat:nth-child(1),.stat:nth-child(2){padding-bottom:0}
+    .faith{grid-template-columns:1fr}
+    .free{padding:34px 26px;border-radius:20px}
+    .free-in{grid-template-columns:1fr;gap:26px}
+    .free-list{grid-template-columns:1fr}
+    .free-side{text-align:left}
+    .exec-row{grid-template-columns:84px 1fr 40px;row-gap:5px;padding:11px 18px}
+    .e-note{grid-column:1 / -1;font-size:12px}
+    .panel-h,.grp-h,.row,.panel-foot,.exec-row{padding-left:18px;padding-right:18px}
+    .links{gap:20px;font-size:14px}
+    .nav-in{gap:22px}
+    .sec{padding-top:64px}
+    .stats{margin-top:64px;padding:44px 0 40px}
+    .free{margin-top:64px}
+    .final{padding-top:64px}
+    footer{margin-top:64px}
+    .shot-frame{border-radius:20px 20px 0 0}
+  }
+  @media(max-width:560px){
+    body{font-size:15px}
+    .wrap{width:calc(100% - 28px)}
+    h1{font-size:33px}
+    .hero-sub{font-size:14.5px}
+    .hero-tags{display:none}
+    .shot-bar span{display:none}
+    .app{padding:11px 12px 14px}
+    .app-head{flex-direction:column;align-items:flex-start;gap:6px}
+    .radar{max-width:210px}
+    .panel-h em{display:none}
+    .row{font-size:13px}
+    .row .l i{font-size:11px}
+    .stat-grid{grid-template-columns:1fr 1fr}
+    .stat b{font-size:34px}
+    .foot-grid{grid-template-columns:1fr}
+    .final .btns{flex-direction:column}
+    .final .btn{width:100%}
+    .nav-cta .mini{display:none}
+    .brand{font-size:19px}
+    .brand svg{width:26px;height:26px}
+    .exec-row{grid-template-columns:1fr 1fr;row-gap:4px}
+    .exec-row .e-bar{grid-column:1 / -1}
+    .e-pct{text-align:left}
+    .vfy-card,.vfy-no{padding:18px 17px 16px}
+    .fld-row{grid-template-columns:1fr 1fr;gap:12px 10px}
+    .vfy-no li{flex-direction:column;gap:2px;align-items:flex-start}
+    .vfy-no li b{min-width:0}
+    .grade-grid{grid-template-columns:1fr}
+    .mats-tabs button{font-size:13px;padding:8px 15px}
+    .fld-hit{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *{animation:none!important;transition:none!important}
+    .findings{height:auto}
+  }
+  .vt{display:inline-block;padding:2px 9px;border-radius:999px;font-family:var(--sans);
+    font-size:11.5px;font-weight:600;line-height:1.7;white-space:nowrap}
+  .vt.fake{background:#FDECEC;color:#B23A3A}
+  .vt.half{background:#FFF5E6;color:#B06A00}
+  .vt.real{background:var(--green-wash);color:var(--green-d)}
+  .exec.wage .exec-row{grid-template-columns:150px 1fr 64px 180px;gap:14px}
+  .exec.wage .exec-row.low .e-bar i{background:linear-gradient(90deg,#FFD68A,#F5A623)}
+  .exec.wage .exec-row.low .e-name,.exec.wage .exec-row.low .e-pct{color:#B06A00}
+  @media(max-width:860px){
+    .exec.wage .exec-row{grid-template-columns:112px 1fr 54px;row-gap:5px}
+    .exec.wage .e-note{grid-column:1/-1}
+  }
+  @media(max-width:560px){
+    .exec.wage .exec-row{grid-template-columns:1fr auto;row-gap:4px;padding:11px 18px}
+    .exec.wage .e-name{grid-column:1;grid-row:1}
+    .exec.wage .e-pct{grid-column:2;grid-row:1;text-align:right}
+    .exec.wage .e-bar{grid-column:1/-1;grid-row:2}
+    .exec.wage .e-note{grid-column:1/-1;grid-row:3}
+  }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="16" r="16" fill="#00C458"/>
+        <path d="M16 24.5S7.6 19.2 7.6 13.6A4.4 4.4 0 0 1 16 11.5a4.4 4.4 0 0 1 8.4 2.1c0 5.6-8.4 10.9-8.4 10.9Z" fill="#fff"/>
+      </svg>
+      <b>回血</b>
+    </a>
+    <div class="links">
+      <a href="#judge">供给判断</a>
+      <a href="#gain">长沙价差</a>
+      <a href="#verify">怎么核验</a>
+      <a href="#mats">年级清单</a>
+      <a href="#run">怎么执行</a>
+      <a href="#free">关于收费</a>
+    </div>
+    <div class="nav-cta">
+      <a href="#free" class="mini">永久免费</a>
+      <a href="#top" class="btn btn-green btn-sm">免费扫描</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-in">
+    <span class="eyebrow">给在校生的 AGENT · 长沙首站 · 永久免费</span>
+    <h1>先扫一遍，<br>把<em>漏掉的</em>捡回来</h1>
+    <p class="hero-sub">学生身份能换到的东西，比你以为的多。但大多数清单把"省钱"排在最前，那是错的。长沙的居住支出比全国城镇还低 63 元，房租不构成变量。真正差 11.5 倍的，是你的一小时——门店站着 13 元，家教坐着 150 元。<b>不是你不努力，是你的时间被标错了价。</b>核验只用两句话：哪个学校，大几。</p>
+    <div class="hero-btns">
+      <a href="#top" class="btn btn-green">免费扫描　约 3 分钟</a>
+      <a href="#judge" class="btn btn-ghost">先看供给判断</a>
+    </div>
+    <div class="hero-tags">
+      <span>不传学生证</span>
+      <span>不用绑卡</span>
+      <span>不卖数据</span>
+      <span>随时可停</span>
+    </div>
+
+    <div class="shot">
+      <div class="shot-frame">
+        <div class="shot-bar"><i></i><i></i><i></i><span>回血 · 长沙 · 时薪诊断</span></div>
+
+        <div class="app">
+          <div class="app-head">
+            <div class="app-title">学生身份诊断
+              <span class="dotpill">扫描中</span>
+            </div>
+            <div class="app-stat">已扫 <b>6</b> 类入口 · 时薪差 <b>11.5 倍</b></div>
+          </div>
+
+          <div class="app-grid">
+            <div class="radar" role="img" aria-label="雷达扫描屏：扇面转一圈，扫到目标时亮起并留下回声，中间的已发现计数不断增加">
+              <div class="radar-screen">
+                <svg class="radar-grid" viewBox="0 0 200 200" aria-hidden="true">
+                  <circle cx="100" cy="100" r="80" fill="none" stroke="#CFE3F0" stroke-width="1" opacity=".9"/>
+                  <circle cx="100" cy="100" r="55" fill="none" stroke="#DBEBF5" stroke-width=".8" opacity=".95"/>
+                  <circle cx="100" cy="100" r="30" fill="none" stroke="#DBEBF5" stroke-width=".8" opacity=".95"/>
+                  <line x1="20" y1="100" x2="180" y2="100" stroke="#E4F0F8" stroke-width=".8" stroke-dasharray="3 4"/>
+                  <line x1="100" y1="20" x2="100" y2="180" stroke="#E4F0F8" stroke-width=".8" stroke-dasharray="3 4"/>
+                  <g stroke="#B7D2E4" stroke-width="1.2" stroke-linecap="round">
+                    <line x1="100" y1="23" x2="100" y2="31"/>
+                    <line x1="100" y1="23" x2="100" y2="31" transform="rotate(90 100 100)"/>
+                    <line x1="100" y1="23" x2="100" y2="31" transform="rotate(180 100 100)"/>
+                    <line x1="100" y1="23" x2="100" y2="31" transform="rotate(270 100 100)"/>
+                    <g stroke="#CDE0EE" stroke-width="1">
+                      <line x1="100" y1="23" x2="100" y2="28" transform="rotate(30 100 100)"/>
+                      <line x1="100" y1="23" x2="100" y2="28" transform="rotate(60 100 100)"/>
+                      <line x1="100" y1="23" x2="100" y2="28" transform="rotate(120 100 100)"/>
+                      <line x1="100" y1="23" x2="100" y2="28" transform="rotate(150 100 100)"/>
+                      <line x1="100" y1="23" x2="100" y2="28" transform="rotate(210 100 100)"/>
+                      <line x1="100" y1="23" x2="100" y2="28" transform="rotate(240 100 100)"/>
+                      <line x1="100" y1="23" x2="100" y2="28" transform="rotate(300 100 100)"/>
+                      <line x1="100" y1="23" x2="100" y2="28" transform="rotate(330 100 100)"/>
+                    </g>
+                  </g>
+                </svg>
+
+                <div class="radar-sweep" aria-hidden="true">
+                  <span class="rt"></span>
+                  <span class="rn"></span>
+                </div>
+
+                <span class="blip m" style="--a:16deg;--r:33%"><b></b></span>
+                <span class="blip k" style="--a:76deg;--r:38%"><b></b></span>
+                <span class="blip k" style="--a:136deg;--r:26%"><b></b></span>
+                <span class="blip m" style="--a:196deg;--r:36%"><b></b></span>
+                <span class="blip s" style="--a:256deg;--r:30%"><b></b></span>
+                <span class="blip m" style="--a:316deg;--r:40%"><b></b></span>
+
+                <div class="radar-core">
+                  <div class="radar-num"><span class="found">0</span><small>项</small></div>
+                  <div class="radar-lab">已发现</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="found-box">
+              <div class="found-h"><b>正在亮起的</b><span>按金额与价差排序</span></div>
+              <ul class="findings" id="findings"></ul>
+              <div class="found-foot">
+                <span>能查到 <b>3</b></span>
+                <span>要你点头 <b>2</b></span>
+                <span>必须本人 <b>1</b></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- 供给判断 -->
+<section class="sec" id="judge">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">01　供给判断</span>
+      <h2>这份清单里，七项不用做。</h2>
+      <p class="sec-sub">市面上给学生做的工具，几乎都从"省钱"起手：话费、会员、云盘、外卖券。听起来对，但算下来一个月不到 50 元。真正贵的东西，它们不碰。</p>
+      <p class="sec-sub" style="margin-top:10px">长沙的居住支出是 7,945 元/年，比全国城镇平均还低 63 元，居住占比 16.8%，全国是 23.2%。<b>房租在这里不构成决策变量。</b>拿省钱当主战场，等于在一个没有价差的地方卖折扣。</p>
+    </div>
+
+    <div class="dirs">
+      <div class="dir">
+        <div class="dir-ic">省</div>
+        <span class="k">判断 · 伪需求最密集</span>
+        <h3>省下来的，不如一小时</h3>
+        <p>话费 −18、视频 −12、云盘 −15，月省 45 元。一年 540 元。<b>一次 985 家教课就顶回来。</b>这类入口大多是"忘了关"，属于记账，不属于诊断。</p>
+      </div>
+      <div class="dir">
+        <div class="dir-ic">赚</div>
+        <span class="k">判断 · 方向对，做窄了</span>
+        <h3>只卖旧东西，不卖时间</h3>
+        <p>旧显示器 260、考研资料 160，合计 420 元，做完就没了。<b>可重复的是时薪：</b>门店 13–18 元，普通本科生家教 30–55，985 在校生家教 100–150。</p>
+      </div>
+      <div class="dir">
+        <div class="dir-ic">机</div>
+        <span class="k">判断 · 入口找错了</span>
+        <h3>奖学金不缺，缺的是门</h3>
+        <p>助学金、励志、国奖，学校资助中心本来就通知。<b>真正没人告诉你的是：</b>86 家 A 股、马栏山 4,000+ 家企业里的项目制、零散单，不进校招系统。</p>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:26px">
+      <div class="panel-h">
+        <div><b>逐条判断</b><em>按原清单顺序 · 依据写在同一行</em></div>
+        <span class="pill">16 项 · 该删 7 项</span>
+      </div>
+
+      <div class="grp b">
+        <div class="grp-h"><span class="bd"></span>省钱<em>原清单主战场</em></div>
+        <div class="row"><div class="l"><span>话费套餐 · 同速率降一档</span><i>−18/月，一年 216 元</i></div><div class="r"><span class="vt fake">伪需求</span></div></div>
+        <div class="row"><div class="l"><span>视频会员 · 学生价未开</span><i>−12/月，认证后自动生效，不需要 agent</i></div><div class="r"><span class="vt fake">伪需求</span></div></div>
+        <div class="row"><div class="l"><span>云盘 · 三个月未用</span><i>−15/月，本质是"忘了退订"，是记账</i></div><div class="r"><span class="vt fake">伪需求</span></div></div>
+        <div class="row"><div class="l"><span>外卖 / 打车券 · 学生专享</span><i>平台自己就在推，学生价是拉新工具</i></div><div class="r"><span class="vt fake">伪需求</span></div></div>
+        <div class="row"><div class="l"><span>教材 · 三门课换二手同版本</span><i>−214 元，真的，但是一次性</i></div><div class="r"><span class="vt real">真实</span></div></div>
+      </div>
+
+      <div class="grp o">
+        <div class="grp-h"><span class="bd"></span>赚钱<em>原清单做窄了</em></div>
+        <div class="row"><div class="l"><span>旧显示器 · 有人收</span><i>¥260，同城自提，一次性</i></div><div class="r"><span class="vt half">真实但一次性</span></div></div>
+        <div class="row"><div class="l"><span>考研资料 · 毕业季好卖</span><i>¥160，只有毕业季那两个月</i></div><div class="r"><span class="vt half">真实但一次性</span></div></div>
+        <div class="row"><div class="l"><span>运费险 · 多扣可申诉</span><i>¥18，金额小到不值得开一次 App</i></div><div class="r"><span class="vt fake">伪需求</span></div></div>
+        <div class="row"><div class="l"><span>时间 · 门店兼职 13–18 元/时</span><i>原清单默认这就是兼职的全部</i></div><div class="r"><span class="vt fake">低估了</span></div></div>
+        <div class="row"><div class="l"><span>时间 · 家教 30–150 元/时</span><i>同一小时，同一座城，差 11.5 倍</i></div><div class="r"><span class="vt real">真实</span></div></div>
+      </div>
+
+      <div class="grp">
+        <div class="grp-h"><span class="bd"></span>找机会<em>方向对，入口错</em></div>
+        <div class="row"><div class="l"><span>国家助学金 · 3,700/年</span><i>真实，但资助中心会发通知，不算"没人数的入口"</i></div><div class="r"><span class="vt real">真实</span></div></div>
+        <div class="row"><div class="l"><span>国家励志奖学金 · 6,000/年</span><i>真实，前 3%，二年级起可申</i></div><div class="r"><span class="vt real">真实</span></div></div>
+        <div class="row"><div class="l"><span>校内勤工助学 · 12–15 元/时</span><i>真实，但这是补贴性岗位，不是市场价</i></div><div class="r"><span class="vt half">真实但低</span></div></div>
+        <div class="row"><div class="l"><span>实习岗 · 招聘 App 首页</span><i>头部岗位全在这里，不需要再扫一遍</i></div><div class="r"><span class="vt fake">不稀缺</span></div></div>
+        <div class="row"><div class="l"><span>86 家 A 股 · 项目制岗位</span><i>原清单没有。它们不发校招启事，靠熟人带</i></div><div class="r"><span class="vt real">被漏掉</span></div></div>
+        <div class="row"><div class="l"><span>马栏山 4,000+ 家企业</span><i>6.4 万音视频人才，剪辑、直播、短视频按条计费</i></div><div class="r"><span class="vt real">被漏掉</span></div></div>
+      </div>
+
+      <div class="panel-foot">
+        <span>该删 <b>7</b> 项</span>
+        <span>真实但受限 <b>3</b> 项</span>
+        <span>真实 <b>4</b> 项</span>
+        <span>被漏掉的 <b>2</b> 类</span>
+      </div>
+    </div>
+
+    <p class="exec-note" style="margin-top:16px">判断标准只有一条：<b>这件事换来的钱，能不能重复发生。</b>一次性的是捡钱，能重复的才是收入。前者谁都会做，后者才是这个产品要解决的。</p>
+  </div>
+</section>
+
+<!-- 长沙价差 -->
+<section class="sec" id="gain">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">02　长沙价差</span>
+      <h2>同一小时，差 11.5 倍。</h2>
+      <p class="sec-sub">这不是勤奋问题。在长沙，门店兼职 13 元一小时，985 在校生家教 150 元一小时。两件事都合法，都在同一个地铁网里，中间没有墙——只有"不知道去哪敲"。<b>11.5 倍就是这份清单里唯一值得做的那件事。</b></p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-h">
+        <div><b>长沙 · 一小时值多少</b><em>2025 年公开报价区间 · 条形按中位值</em></div>
+        <span class="pill">最高 ÷ 最低 = 11.5</span>
+      </div>
+      <div class="exec wage">
+        <div class="exec-row low"><span class="e-name">校内勤工助学</span><span class="e-bar"><i class="fill" data-w="8"></i></span><span class="e-pct">12–15</span><span class="e-note">补贴性岗位，学校定价</span></div>
+        <div class="exec-row low"><span class="e-name">门店兼职</span><span class="e-bar"><i class="fill" data-w="10"></i></span><span class="e-pct">13–18</span><span class="e-note">名创 18 · 果呀呀 17 · 盖码饭 13</span></div>
+        <div class="exec-row low"><span class="e-name">非全日制法定下限</span><span class="e-bar"><i class="fill" data-w="15"></i></span><span class="e-pct">22</span><span class="e-note">长人社规〔2025〕1 号 · 9 月 1 日起</span></div>
+        <div class="exec-row"><span class="e-name">普通本科生家教</span><span class="e-bar"><i class="fill" data-w="28"></i></span><span class="e-pct">30–55</span><span class="e-note">小学 30–35 · 初中 35–45 · 高中 45–55</span></div>
+        <div class="exec-row done"><span class="e-name">985 在校生家教</span><span class="e-bar"><i class="fill" data-w="83"></i></span><span class="e-pct">100–150</span><span class="e-note">家长按学校认价，不按经验</span></div>
+      </div>
+    </div>
+
+    <p class="exec-note" style="margin-top:14px">门店那 13 元要分清：多数是全日制月薪摊算，不是非全日制小时工。长沙六城区 2025 年非全日制下限 22 元/小时、月最低 2,200 元。<b>低端市场已经贴着法定地板，抬不动了。</b>能抬的只有上面那两行。</p>
+
+    <div class="panel" style="margin-top:22px">
+      <div class="panel-h">
+        <div><b>需求方在哪</b><em>三个池子 · 都不进校招系统</em></div>
+        <span class="pill">长沙独有</span>
+      </div>
+      <div class="grp">
+        <div class="grp-h"><span class="bd"></span>家教<em>地图重合</em></div>
+        <div class="row"><div class="l"><span>四大名校 · 长郡 / 雅礼 / 师大附中 / 市一中</span><i>与 3 所 985 同在市区，地铁半小时可达</i></div><div class="r">30 分钟</div></div>
+        <div class="row"><div class="l"><span>985 密度 · 国防科大 / 中南 / 湖大</span><i>全国第三，仅次于北京、上海</i></div><div class="r">3 所</div></div>
+        <div class="row"><div class="l"><span>学生池 · 本专科 83.16 万 + 研究生 9.49 万</span><i>每 11.5 个长沙人里就有 1 个大学生</i></div><div class="r">93 万</div></div>
+        <div class="row"><div class="l"><span>家长愿意付的价 · 按学校认</span><i>同样一节课，招牌比经验值钱</i></div><div class="r o">100–150</div></div>
+      </div>
+      <div class="grp b">
+        <div class="grp-h"><span class="bd"></span>内容与演出<em>按条 / 按场结</em></div>
+        <div class="row"><div class="l"><span>马栏山视频文创园 · 4,000+ 家企业</span><i>剪辑、包装、短视频代运营，按条计费</i></div><div class="r b">4,000+</div></div>
+        <div class="row"><div class="l"><span>音视频从业者 · 6.4 万人</span><i>人手不够时发零散单，不进招聘 App</i></div><div class="r b">6.4 万</div></div>
+        <div class="row"><div class="l"><span>全年演出 · 2.8 万场</span><i>其中 5,000 人以上 56 场，现场执行按天招</i></div><div class="r b">2.8 万场</div></div>
+      </div>
+      <div class="grp o">
+        <div class="grp-h"><span class="bd"></span>产业侧<em>项目制，靠熟人</em></div>
+        <div class="row"><div class="l"><span>A 股上市公司 · 中部第一</span><i>48 家制造业，总市值 1.1 万亿</i></div><div class="r o">86 家</div></div>
+        <div class="row"><div class="l"><span>A 股密度 · 每万名在校生</span><i>0.93 家 · 18 个省会里第 5</i></div><div class="r o">0.93</div></div>
+        <div class="row"><div class="l"><span>新消费品牌 · 80 多个</span><i>设计、拍摄、投放，都有外包预算</i></div><div class="r o">80+</div></div>
+      </div>
+    </div>
+
+    <p class="exec-note" style="margin-top:16px">坦白一处：这些池子没有统一报价，也没有公开入口。招聘 App 首页永远是那几家大厂，校招系统只认签约单位。<b>真正的成本不是能力，是不知道该敲哪扇门。</b>所以产品做的第一件事，不是替你去干，是把这个门牌号写给你。</p>
+  </div>
+</section>
+
+<!-- 核验 -->
+<section class="sec" id="verify">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">03　核验</span>
+      <h2>不用交学生证。问两个问题就够。</h2>
+      <p class="sec-sub">学校、年级，这两项决定了你能碰到哪些入口。剩下的信息，扫描的时候它自己去查，不需要你先把手里的证件拍上来。</p>
+    </div>
+
+    <div class="vfy">
+      <div class="vfy-card">
+        <div class="vfy-h">核验 · 两句话<em>约 20 秒</em></div>
+
+        <div class="fld">
+          <label for="school">你在哪所学校</label>
+          <div class="fld-box">
+            <input id="school" type="text" inputmode="text" autocomplete="off" placeholder="输入全称或简称，如 中南大学" style="flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:15px;font-weight:600;color:#12304A;outline:none">
+            <span class="fld-hit">长沙 56 所高校</span>
+          </div>
+        </div>
+
+        <div class="fld">
+          <label>学校类型 · 可改</label>
+          <div class="chips" id="chips-type">
+            <span class="on">985 / 211</span><span>普通本科</span><span>高职高专</span>
+          </div>
+        </div>
+
+        <div class="fld">
+          <label>现在大几</label>
+          <div class="chips" id="chips-grade">
+            <span>大一</span><span>大二</span><span class="on">大三</span><span>大四</span>
+          </div>
+        </div>
+
+        <div class="fld-row">
+          <div><i>学制</i><b>四年制</b></div>
+          <div><i>入学年份</i><b>2023 年</b></div>
+          <div><i>距离毕业</i><b>还有 19 个月</b></div>
+        </div>
+
+        <div class="vfy-foot">这三项够用了。下一屏直接出清单，中间没有一步要传图。</div>
+      </div>
+
+      <div class="vfy-no">
+        <h4>不需要什么</h4>
+        <ul>
+          <li><b>学生证照片</b><span>学号、院系、本人照片，一张就能对上人</span></li>
+          <li><b>身份证正反面</b><span>号码和住址都在上面，与核验无关</span></li>
+          <li><b>学信网截图</b><span>表里有学籍号、专业和身份证号</span></li>
+          <li><b>成绩单原图</b><span>排名可以自己填，它只用来排序</span></li>
+          <li><b>家庭情况证明</b><span>进门不设门槛，困难认定是学校的事</span></li>
+        </ul>
+        <p>要发钱、要报名的地方，一定会把材料列清楚。<b>到那一步你再去开</b>，由你决定给谁看。核验本身，什么都不收。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 年级 × 学校类型 -->
+<section class="sec" id="mats">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">04　按学校、按年级</span>
+      <h2>大一该攒招牌，大四才该换钱。</h2>
+      <p class="sec-sub">价差不是每个人现在都能吃到。985 的招牌是大一就定了的，普通本科要靠作品和大创往上加。所以这张单子按学校类型分栏，按年级排顺序——<b>先告诉你这一格最值钱的那件事。</b></p>
+    </div>
+
+    <div class="mats-tabs" role="tablist" aria-label="学校类型">
+      <button role="tab" aria-selected="true" data-tab="t1">985 / 211</button>
+      <button role="tab" aria-selected="false" data-tab="t2">普通本科</button>
+      <button role="tab" aria-selected="false" data-tab="t3">高职高专</button>
+      <button role="tab" aria-selected="false" data-tab="t4">师范 · 涉农 · 医学</button>
+    </div>
+
+    <div class="mats-panel on" id="t1">
+      <div class="grade-grid">
+        <div class="gcard">
+          <header><span class="g-no">大一</span><em>招牌就是资产</em></header>
+          <ul>
+            <li><span>家教 · 大一即可接</span><b>100–150/时</b></li>
+            <li><span>国家助学金</span><b>3,700/年</b></li>
+            <li><span>新生入学资助 · 滋蕙</span><b>500–1,000</b></li>
+            <li><span>学生票 · 每年 4 次</span><b>动车 7.5 折</b></li>
+          </ul>
+          <p>家长按学校认价，不按年级。大一的 985 学生，报价已经能到 100。</p>
+        </div>
+        <div class="gcard">
+          <header><span class="g-no">大二</span><em>绩点换钱的一年</em></header>
+          <ul>
+            <li><span>国家奖学金 · 全国 12 万名</span><b>10,000/年</b></li>
+            <li><span>国家励志奖学金 · 前 3%</span><b>6,000/年</b></li>
+            <li><span>大学生创新创业训练</span><b>1–2 万</b></li>
+            <li><span>马栏山零散单 · 剪辑接单</span><b>按条</b></li>
+          </ul>
+          <p>国奖看综合，励志看成绩加困难认定；两项不可兼得，但都能和大创并行。</p>
+        </div>
+        <div class="gcard">
+          <header><span class="g-no">大三</span><em>门牌号开始有用</em></header>
+          <ul>
+            <li><span>夏令营 / 预推免</span><b>5–9 月</b></li>
+            <li><span>本校保研率 · 985 区间</span><b>30–65%</b></li>
+            <li><span>86 家 A 股 · 项目制实习</span><b>不发校招</b></li>
+            <li><span>暑期实习 · 转正名额</span><b>提前批</b></li>
+          </ul>
+          <p>2025 年多校取消夏令营，预推免成主战场。同时该去敲那 86 家公司的门了。</p>
+        </div>
+        <div class="gcard">
+          <header><span class="g-no">大四</span><em>只此一次的钱</em></header>
+          <ul>
+            <li><span>一次性求职补贴 · 湖南</span><b>1,500</b></li>
+            <li><span>推免系统填报</span><b>9 月底</b></li>
+            <li><span>基层就业学费补偿</span><b>≤20,000/年</b></li>
+            <li><span>秋招 + 考研可同时报</span><b>9–11 月</b></li>
+          </ul>
+          <p>湖南求职补贴 1,500 元，2025 届申报窗口 7/23–9/13，错过不补发。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mats-panel" id="t2">
+      <div class="grade-grid">
+        <div class="gcard">
+          <header><span class="g-no">大一</span><em>先补那块招牌</em></header>
+          <ul>
+            <li><span>家教 · 起步价</span><b>30–55/时</b></li>
+            <li><span>国家助学金</span><b>3,700/年</b></li>
+            <li><span>转专业 · 大多在大一末</span><b>一次</b></li>
+            <li><span>国家助学贷款</span><b>≤20,000/年</b></li>
+          </ul>
+          <p>没有 985 招牌，就先做作品：带两三个学生、出成绩，报价才抬得起来。</p>
+        </div>
+        <div class="gcard">
+          <header><span class="g-no">大二</span><em>把加分项攒起来</em></header>
+          <ul>
+            <li><span>国家励志奖学金</span><b>6,000/年</b></li>
+            <li><span>大创项目 · 省级以上</span><b>1–2 万</b></li>
+            <li><span>四六级 / 教资笔试</span><b>两证</b></li>
+            <li><span>马栏山代运营 · 按条结算</span><b>外包预算</b></li>
+          </ul>
+          <p>推免名额少的学校，竞赛和大创是唯一能自己加的分；作品集也是同一套东西。</p>
+        </div>
+        <div class="gcard">
+          <header><span class="g-no">大三</span><em>考研还是攒项目</em></header>
+          <ul>
+            <li><span>考研择校 · 考数学的科目</span><b>提前 12 个月</b></li>
+            <li><span>专业实习</span><b>3–6 个月</b></li>
+            <li><span>省考 / 选调 · 部分省收本科</span><b>看省份</b></li>
+            <li><span>长沙省考报录比</span><b>21.18∶1</b></li>
+          </ul>
+          <p>长沙职位平均 21.18 人抢一个，全省 9.61。想上岸，别只盯着省会。</p>
+        </div>
+        <div class="gcard">
+          <header><span class="g-no">大四</span><em>三条路同时开</em></header>
+          <ul>
+            <li><span>秋招主战场</span><b>9–11 月</b></li>
+            <li><span>一次性求职补贴 · 湖南</span><b>1,500</b></li>
+            <li><span>三支一扶 / 西部计划</span><b>服务 2 年</b></li>
+            <li><span>基层就业学费补偿</span><b>≤20,000/年</b></li>
+          </ul>
+          <p>长沙 2025 届毕业生 52 万人，省内就业不到四成。留不留，是个真实的选项。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mats-panel" id="t3">
+      <div class="grade-grid">
+        <div class="gcard">
+          <header><span class="g-no">大一</span><em>学费先减掉</em></header>
+          <ul>
+            <li><span>国家助学金 · 高职约 22%</span><b>3,700/年</b></li>
+            <li><span>雨露计划 · 脱贫家庭</span><b>3,000/年</b></li>
+            <li><span>退役士兵 · 全部享受</span><b>3,700/年</b></li>
+            <li><span>勤工助学 · 每小时 ≥12 元</span><b>480/月</b></li>
+          </ul>
+          <p>雨露计划分春秋两学期发，每学期 1,500，村里报。</p>
+        </div>
+        <div class="gcard">
+          <header><span class="g-no">大二</span><em>证书能换补贴</em></header>
+          <ul>
+            <li><span>国家励志奖学金 · 前 3.3%</span><b>6,000/年</b></li>
+            <li><span>技能等级证书 · 一次性</span><b>1,500–2,000</b></li>
+            <li><span>1+X 证书</span><b>按工种</b></li>
+            <li><span>现代学徒制 · 企业补贴</span><b>按月</b></li>
+          </ul>
+          <p>证书要在毕业前一年内考，过期申领不受理。</p>
+        </div>
+        <div class="gcard">
+          <header><span class="g-no">大三</span><em>毕业年，一次算清</em></header>
+          <ul>
+            <li><span>专升本 · 各省统考</span><b>3–4 月</b></li>
+            <li><span>顶岗实习</span><b>半年</b></li>
+            <li><span>一次性求职补贴 · 湖南</span><b>1,500</b></li>
+            <li><span>雨露短期技能培训</span><b>1,500–2,000</b></li>
+          </ul>
+          <p>三年制的高职，毕业年就是大三，所有申报都压在这一年。</p>
+        </div>
+        <div class="gcard">
+          <header><span class="g-no">大四</span><em>三年制没有这一格</em></header>
+          <ul>
+            <li><span>职业本科 · 按本科口径</span><b>重算</b></li>
+            <li><span>专升本后本科两年</span><b>2 年</b></li>
+            <li><span>应征入伍学费补偿</span><b>≤20,000/年</b></li>
+            <li><span>基层就业学费补偿</span><b>≤20,000/年</b></li>
+          </ul>
+          <p>升上本科后奖助学金按本科口径重算，别按下限估。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mats-panel" id="t4">
+      <div class="grade-grid">
+        <div class="gcard">
+          <header><span class="g-no">大一</span><em>入学就签的那份协议</em></header>
+          <ul>
+            <li><span>公费师范 · 两免一补</span><b>学费全免</b></li>
+            <li><span>定向医学生 · 免费培养</span><b>带编</b></li>
+            <li><span>退役士兵 · 全部享受</span><b>3,700/年</b></li>
+            <li><span>家教 · 师范生溢价</span><b>40–80/时</b></li>
+          </ul>
+          <p>两免一补＝免学费、免住宿费，加每月生活补助。</p>
+        </div>
+        <div class="gcard">
+          <header><span class="g-no">大二</span><em>还有第二次机会</em></header>
+          <ul>
+            <li><span>优师计划 · 中西部定向</span><b>两免一补</b></li>
+            <li><span>非公费生转入 · 入学两年内</span><b>返学费</b></li>
+            <li><span>公费农科生 · 部分省</span><b>看省份</b></li>
+            <li><span>国家助学金</span><b>3,700/年</b></li>
+          </ul>
+          <p>非公费生入学两年内可申请转入，转入后返还学费。</p>
+        </div>
+        <div class="gcard">
+          <header><span class="g-no">大三</span><em>去向开始绑定</em></header>
+          <ul>
+            <li><span>履约地市 · 按考核排序选</span><b>一次</b></li>
+            <li><span>教育实习 / 规培衔接</span><b>半年</b></li>
+            <li><span>执业资格 · 教资 / 医师</span><b>应届可考</b></li>
+            <li><span>签约前先算清违约金</span><b>成本</b></li>
+          </ul>
+          <p>本研衔接的公费师范生，研一课程结束后才按排序选地市。</p>
+        </div>
+        <div class="gcard">
+          <header><span class="g-no">大四</span><em>换来的是一份编制</em></header>
+          <ul>
+            <li><span>履约任教 · 有编有岗</span><b>6 年</b></li>
+            <li><span>本研衔接 · 免试读教育硕士</span><b>全日制</b></li>
+            <li><span>基层任教专项支持</span><b>按月补</b></li>
+            <li><span>违约 · 退费加信用记录</span><b>成本</b></li>
+          </ul>
+          <p>违约要退已享受的免费教育费用，并计入信用记录，别只听好处。</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="mats-note">金额依据教育部、财政部与湖南省 2025 年公开文件整理，<b>档位和申报时间以本校学生资助中心通知为准</b>。同类项目通常不可重复领取。</p>
+  </div>
+</section>
+
+<!-- 发现清单 -->
+<section class="sec" id="find">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">05　扫完得到什么</span>
+      <h2>三个钱包，分开算。</h2>
+      <p class="sec-sub">原清单把一次性的钱、学年的钱、每月的钱加成一个总数，看着很大，其实三个月就花完了。<b>这里分三栏：能重复的、一年一次的、一辈子一次的。</b>能重复的那栏最窄，但它才是"回血"。</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-h">
+        <div><b>发现清单</b><em>中南大学 · 985 · 大三 · 11 月 19 日</em></div>
+        <span class="pill">每月 +¥1,840</span>
+      </div>
+
+      <div class="grp">
+        <div class="grp-h"><span class="bd"></span>按月 · 能重复<em>回血在这里</em></div>
+        <div class="row"><div class="l"><span>家教 · 高中物理 · 按学校报价</span><i>每周 2 次 · 地铁 25 分钟 · 家长已确认</i></div><div class="r">¥960/月</div></div>
+        <div class="row"><div class="l"><span>家教 · 第二家 · 初中数学</span><i>每周 1 次 · 排课不冲突</i></div><div class="r">¥400/月</div></div>
+        <div class="row"><div class="l"><span>校内助管 · 图书馆</span><i>每周 6 小时 · 排班可调</i></div><div class="r">¥480/月</div></div>
+        <div class="row"><div class="l"><span>马栏山 · 短视频剪辑 · 按条</span><i>6.4 万从业者的园区，缺人时发零散单</i></div><div class="r">按条</div></div>
+      </div>
+
+      <div class="grp b">
+        <div class="grp-h"><span class="bd"></span>按学年 · 一年一次<em>要材料</em></div>
+        <div class="row"><div class="l"><span>国家助学金 · 本学年未申报</span><i>需一份家庭情况证明 · 学院开</i></div><div class="r">¥3,700</div></div>
+        <div class="row"><div class="l"><span>国家励志奖学金 · 下周截止</span><i>前 3% · 成绩单可在线打印</i></div><div class="r">¥6,000</div></div>
+        <div class="row"><div class="l"><span>大创项目 · 省级以上</span><i>结题才拨款，但能进作品集</i></div><div class="r">1–2 万</div></div>
+      </div>
+
+      <div class="grp o">
+        <div class="grp-h"><span class="bd"></span>一次性 · 捡完就没了<em>原清单全部在这里</em></div>
+        <div class="row"><div class="l"><span>旧显示器 · 有人收</span><i>同城自提</i></div><div class="r o">+¥260</div></div>
+        <div class="row"><div class="l"><span>三门课教材 · 换二手同版本</span><i>八成新 · 版本一致</i></div><div class="r o">−¥214</div></div>
+        <div class="row"><div class="l"><span>校园卡押金 · 已到期</span><i>需要本人办理</i></div><div class="r q">待你办</div></div>
+      </div>
+
+      <div class="panel-foot">
+        <span>按月 <b>¥1,840</b></span>
+        <span>按学年 <b>¥9,700</b></span>
+        <span>一次性 <b>+260 / 省 214</b></span>
+        <span>必须本人 <b>1</b> 项</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 怎么执行 -->
+<section class="sec" id="run">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">06　怎么执行</span>
+      <h2>它能查、能算、能写。不能替你签字。</h2>
+      <p class="sec-sub">原站点说"列出来的事，它直接去办"。这句话经不起追问：一个只知道学校和年级、没有任何账号授权的 agent，投不了简历，也改不了套餐。<b>能办的是查、比对、整理、起草；办事的最后一步，一定需要你本人。</b></p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-h">
+        <div><b>执行队列</b><em>今日 6 项 · 同一时刻</em></div>
+        <span class="pill">运行中</span>
+      </div>
+      <div class="exec">
+        <div class="exec-row done"><span class="e-name">时薪诊断</span><span class="e-bar"><i class="fill" data-w="100"></i></span><span class="e-pct">100%</span><span class="e-note">13 → 150，差 11.5 倍</span></div>
+        <div class="exec-row done"><span class="e-name">门牌号清单</span><span class="e-bar"><i class="fill" data-w="100"></i></span><span class="e-pct">100%</span><span class="e-note">12 个入口 · 地址已写全</span></div>
+        <div class="exec-row done"><span class="e-name">家教需求匹配</span><span class="e-bar"><i class="fill" data-w="100"></i></span><span class="e-pct">100%</span><span class="e-note">3 个家庭 · 已给你联系方式</span></div>
+        <div class="exec-row done"><span class="e-name">奖助材料清单</span><span class="e-bar"><i class="fill" data-w="100"></i></span><span class="e-pct">100%</span><span class="e-note">7 项 · 3 项可线上开</span></div>
+        <div class="exec-row"><span class="e-name">简历改写 · 项目制岗</span><span class="e-bar"><i class="fill" data-w="72"></i></span><span class="e-pct">72%</span><span class="e-note">正在补齐第 3 段</span></div>
+        <div class="exec-row hold"><span class="e-name">投递 / 签约</span><span class="e-bar"><i class="fill" data-w="100"></i></span><span class="e-pct">待你</span><span class="e-note">要授权才能替你提交</span></div>
+      </div>
+    </div>
+    <p class="exec-note">碰到必须本人的环节，它会停下来，<b>把原因写清楚</b>，等你三分钟。其余的继续跑，不为一件卡住的事让整条队列停下。<b>它不替你登录任何账号，也不需要你的密码。</b></p>
+  </div>
+</section>
+
+<!-- 账本 -->
+<section class="sec" id="ledger">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">07　账本</span>
+      <h2>它查了什么，打开就能看见。</h2>
+      <p class="sec-sub">承诺靠句子，信任靠记录。每一笔算出来的、每一扇门找到的，都有时间和出处。</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-h">
+        <div><b>11 月 19 日</b><em>周三 · 共 14 项</em></div>
+        <span class="pill" style="color:#C47800;background:#FFF5E6">其中 2 项等你确认</span>
+      </div>
+
+      <div class="row" style="grid-template-columns:56px 1fr auto;gap:16px;padding:12px 22px">
+        <div class="l"><span style="font-family:var(--num);color:var(--ink-3);font-size:12.5px">06:10</span></div>
+        <div class="l"><span>算完三张时薪表，价差 11.5 倍</span><i>门店 13 · 本科家教 55 · 985 家教 150</i></div>
+        <div class="r b">11.5×</div>
+      </div>
+      <div class="row" style="grid-template-columns:56px 1fr auto;gap:16px;padding:12px 22px">
+        <div class="l"><span style="font-family:var(--num);color:var(--ink-3);font-size:12.5px">08:40</span></div>
+        <div class="l"><span>在 4,000+ 家企业里筛出 12 个零散单入口</span><i>马栏山 · 按条计费 · 地址已附</i></div>
+        <div class="r b">12 个</div>
+      </div>
+      <div class="row" style="grid-template-columns:56px 1fr auto;gap:16px;padding:12px 22px">
+        <div class="l"><span style="font-family:var(--num);color:var(--ink-3);font-size:12.5px">09:15</span></div>
+        <div class="l"><span>匹配到 3 个家教需求</span><i>都在地铁 30 分钟内 · 家长同意接触</i></div>
+        <div class="r">¥120/次</div>
+      </div>
+      <div class="row" style="grid-template-columns:56px 1fr auto;gap:16px;padding:12px 22px">
+        <div class="l"><span style="font-family:var(--num);color:var(--ink-3);font-size:12.5px">11:30</span></div>
+        <div class="l"><span>核完励志奖学金的申报条件</span><i>前 3% · 下周截止 · 你还来得及</i></div>
+        <div class="r">¥6,000</div>
+      </div>
+      <div class="row" style="grid-template-columns:56px 1fr auto;gap:16px;padding:12px 22px">
+        <div class="l"><span style="font-family:var(--num);color:var(--ink-3);font-size:12.5px">14:05</span></div>
+        <div class="l"><span>三门课的教材找到二手同版本</span><i>版次一致 · 省 214 元</i></div>
+        <div class="r">−214 元</div>
+      </div>
+      <div class="row" style="grid-template-columns:56px 1fr auto;gap:16px;padding:12px 22px">
+        <div class="l"><span style="font-family:var(--num);color:var(--ink-3);font-size:12.5px">16:40</span></div>
+        <div class="l"><span>助学金材料还差一份证明</span><i>已列出开具地点 · 等你半天</i></div>
+        <div class="r q">待补</div>
+      </div>
+      <div class="row" style="grid-template-columns:56px 1fr auto;gap:16px;padding:12px 22px">
+        <div class="l"><span style="font-family:var(--num);color:var(--ink-3);font-size:12.5px">明天</span></div>
+        <div class="l"><span>第一家试课已排好</span><i>19:00 · 地铁 25 分钟 · 教材已备</i></div>
+        <div class="r q">已准备</div>
+      </div>
+
+      <div class="panel-foot">
+        <span>找到入口 <b>12</b> 个</span>
+        <span>每月可重复 <b>¥1,840</b></span>
+        <span>一次性省下 <b>214</b> 元</span>
+      </div>
+    </div>
+
+    <p class="exec-note">这是格式示意，数字是假的。真的账目只对你自己可见，可以导出，可以随时删。</p>
+  </div>
+</section>
+
+<!-- 大数字 -->
+<section class="stats">
+  <div class="wrap stats-in">
+    <h3>长沙这件事，量级是这样</h3>
+    <p class="lead">全部是公开数据，不是内测均值。每一条都能自己核。</p>
+    <div class="stat-grid">
+      <div class="stat"><b>11.5<i>倍</i></b><span>最高时薪 ÷ 最低时薪</span></div>
+      <div class="stat"><b>93<i>万</i></b><span>长沙在校生 · 每 11.5 人 1 个</span></div>
+      <div class="stat"><b>86<i>家</i></b><span>A 股上市公司 · 中部第一</span></div>
+      <div class="stat"><b>0<i>元</i></b><span>收费，永久</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 承诺 -->
+<section class="sec" id="faith">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">08　边界</span>
+      <h2>能做什么，不能做什么，都写清楚。</h2>
+      <p class="sec-sub">说得太满的产品，你大概已经见过很多了。这里只写真能做到的。</p>
+    </div>
+
+    <div class="faith">
+      <div class="faith-card">
+        <h4>不承诺</h4>
+        <ul>
+          <li>不承诺你一定拿到那个名额。</li>
+          <li>不承诺每个月多赚多少。</li>
+          <li>不承诺替你投简历、代你签约。</li>
+          <li>不承诺家教一定接得到。</li>
+        </ul>
+      </div>
+      <div class="faith-card yes">
+        <h4>承诺</h4>
+        <ul>
+          <li>该敲的门，把地址写给你。</li>
+          <li>每一笔算出来的，都记账。</li>
+          <li>要你出面的地方，说清楚，不绕。</li>
+          <li>你随时可以停，数据全部带走。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 免费 -->
+<section class="wrap" id="free">
+  <div class="free">
+    <div class="free-in">
+      <div>
+        <h3><small>关于收费</small>永久免费，四个不做。</h3>
+        <div class="free-list">
+          <div><span><b>不卖数据。</b>简历、成绩、账单不会出现在任何商业报告里。</span></div>
+          <div><span><b>不放广告。</b>不会出现贷款、分期、校园贷。</span></div>
+          <div><span><b>不做付费解锁。</b>所有功能，所有人，从头到尾一样。</span></div>
+          <div><span><b>撑不住会先说。</b>提前一年公告，不会半夜改成收费。</span></div>
+        </div>
+      </div>
+      <div class="free-side">
+        <a href="#top" class="btn btn-green">免费开始扫描</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 落款 -->
+<section class="final">
+  <div class="wrap">
+    <h2>先扫一遍，再说下一步。</h2>
+    <p>不用绑卡，不用付费，今天就能扫。第一轮扫完，你会拿到一张标好门牌号的清单。</p>
+    <div class="btns">
+      <a href="#top" class="btn btn-green">开始扫描　约 3 分钟</a>
+      <a href="#find" class="btn btn-ghost">看看清单长什么样</a>
+    </div>
+    <small>办不办，什么时候办，你说了算。</small>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="brand">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="16" fill="#00C458"/>
+            <path d="M16 24.5S7.6 19.2 7.6 13.6A4.4 4.4 0 0 1 16 11.5a4.4 4.4 0 0 1 8.4 2.1c0 5.6-8.4 10.9-8.4 10.9Z" fill="#fff"/>
+          </svg>
+          <b>回血</b>
+        </a>
+        <p>给在校生的 agent。长沙首站：先把一小时的价钱找回来，再谈省下的零钱。</p>
+      </div>
+      <div class="foot-col">
+        <h5>产品</h5>
+        <a href="#judge">供给判断</a>
+        <a href="#gain">长沙价差</a>
+        <a href="#verify">怎么核验</a>
+        <a href="#mats">年级清单</a>
+        <a href="#find">发现清单</a>
+        <a href="#run">怎么执行</a>
+      </div>
+      <div class="foot-col">
+        <h5>关于</h5>
+        <a href="#faith">能做什么</a>
+        <a href="#free">关于收费</a>
+        <a href="#">我们怎么活下来</a>
+        <a href="#">联系我们</a>
+      </div>
+      <div class="foot-col">
+        <h5>数据来源</h5>
+        <a href="#gain">长沙学生分布</a>
+        <a href="#gain">省会城市对比</a>
+        <a href="#">教育部统计公报</a>
+        <a href="#">长人社规〔2025〕1 号</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 回血 · 给在校生的 agent · 长沙版</span>
+      <div class="l">
+        <a href="#">隐私</a>
+        <a href="#">免责声明</a>
+        <a href="#">示意站</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>(function(){
+  // 学校类型 / 年级：只给建议，不作为进入门槛
+  var tabs = [].slice.call(document.querySelectorAll('.mats-tabs button'));
+  var panels = [].slice.call(document.querySelectorAll('.mats-panel'));
+
+  function pick(id){
+    tabs.forEach(function(b){ b.setAttribute('aria-selected', String(b.getAttribute('data-tab') === id)); });
+    panels.forEach(function(p){ p.classList.toggle('on', p.id === id); });
+  }
+  tabs.forEach(function(b){
+    b.addEventListener('click', function(){ pick(b.getAttribute('data-tab')); });
+  });
+
+  // 核验卡里的选项也是纯选择，不提交任何东西
+  [].slice.call(document.querySelectorAll('.chips')).forEach(function(box){
+    [].slice.call(box.children).forEach(function(c){
+      c.addEventListener('click', function(){
+        [].slice.call(box.children).forEach(function(o){ o.classList.remove('on'); });
+        c.classList.add('on');
+      });
+    });
+  });
+})();
+
+(function(){
+  var motionOK = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 扫描项：k=机会 s=省钱 m=要你出面
+  var items = [
+    {tag:'m', lab:'你', txt:'助学金 · 本学年未申报', val:'待补材料'},
+    {tag:'k', lab:'机', txt:'985 家教 · 按学校认价', val:'150/时'},
+    {tag:'k', lab:'机', txt:'马栏山 · 剪辑零散单', val:'按条'},
+    {tag:'m', lab:'你', txt:'门牌号 12 个 · 需本人联系', val:'待你办'},
+    {tag:'s', lab:'省', txt:'教材 · 二手同版本', val:'−214'},
+    {tag:'m', lab:'你', txt:'校园卡押金 · 已到期', val:'待你办'}
+  ];
+
+  var list    = document.getElementById('findings');
+  var found   = document.querySelector('.found');
+  var sweep   = document.querySelector('.radar-sweep');
+  var blips   = [].slice.call(document.querySelectorAll('.blip'));
+  var liveBar = document.querySelector('.e-bar i[data-w="72"]');
+  var CYCLE   = 9000;   // one revolution == one scan pass
+
+  function makeLi(it){
+    var li = document.createElement('li');
+    li.innerHTML = '<span class="f-tag ' + it.tag + '">' + it.lab + '</span>'
+                 + '<span class="f-txt">' + it.txt + '</span>'
+                 + '<span class="f-val">' + it.val + '</span>';
+    return li;
+  }
+
+  var fills = document.querySelectorAll('.e-bar i.fill');
+  fills.forEach(function(el){
+    var w = el.getAttribute('data-w') || '0';
+    if (!motionOK) { el.style.width = w + '%'; return; }
+    el.style.width = '0%';
+    setTimeout(function(){ el.style.width = w + '%'; }, 260);
+  });
+
+  if (!list) return;
+
+  if (!motionOK) {
+    items.forEach(function(it){ list.appendChild(makeLi(it)); });
+    found.textContent = String(items.length);
+    blips.forEach(function(el){
+      el.firstElementChild.style.setProperty('--o', '1');
+    });
+    if (liveBar) liveBar.style.width = '72%';
+    return;
+  }
+
+  list.innerHTML = '';
+  found.textContent = '0';
+  if (liveBar) liveBar.style.width = '0%';
+
+  var ANGS = blips.map(function(el){
+    return parseFloat(el.style.getPropertyValue('--a')) || 0;
+  });
+
+  var shown = -1;
+
+  function render(t){
+    var cycleT = t % CYCLE;
+    var deg = (cycleT / CYCLE) * 360;
+
+    if (sweep) sweep.style.transform = 'rotate(' + deg.toFixed(2) + 'deg)';
+
+    var n = 0;
+    for (var i = 0; i < blips.length; i++) {
+      var a = ANGS[i];
+      var lit = deg >= a;
+      if (lit) n++;
+      var b = blips[i].firstElementChild;
+      b.style.setProperty('--o', lit ? '1' : '0');
+      if (lit) {
+        var age = deg - a;
+        b.style.setProperty('--eo', age < 70 ? String(0.55 * (1 - age / 70)) : '0');
+        b.style.setProperty('--e', String(1 + (age / 70) * 2.6));
+      } else {
+        b.style.setProperty('--eo', '0');
+        b.style.setProperty('--e', '1');
+      }
+    }
+
+    if (n !== shown) {
+      shown = n;
+      list.innerHTML = '';
+      var from = n > 4 ? n - 4 : 0;
+      for (var j = from; j < n; j++) list.appendChild(makeLi(items[j % items.length]));
+      found.textContent = String(n);
+    }
+
+    if (liveBar) {
+      var p = Math.min(0.72, (cycleT / CYCLE) * 0.82);
+      liveBar.style.width = (p * 100).toFixed(1) + '%';
+    }
+
+    requestAnimationFrame(render);
+  }
+  requestAnimationFrame(render);
+})();
+</script>
+</body>
+</html>
